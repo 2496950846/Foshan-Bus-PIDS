@@ -246,7 +246,6 @@ pm2 startup
 - `api/db.js` - 数据库配置
 
 ## 截图演示
-
 https://github.com/2496950846/Foshan-Bus-PIDS/main/png/演示.png
 
 ### 首页（电子站牌显示界面）
