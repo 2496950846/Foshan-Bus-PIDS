@@ -29,7 +29,9 @@ function needScroll(stationName: string): boolean {
 function scrollDuration(stationName: string): string {
   const baseDuration = 8
   const extraDuration = Math.min(stationName.length - 7, 5) * 1
-  return (baseDuration + extraDuration) + 's'
+  const totalDuration = baseDuration + extraDuration
+  const pauseDuration = 2
+  return (totalDuration + pauseDuration * 2) + 's'
 }
 
 function getLineStyle(row: Station[], rowIndex: number) {
@@ -85,10 +87,6 @@ function getLineStyle(row: Station[], rowIndex: number) {
                 :style="{ animationDuration: scrollDuration(station.name) }"
               >
                 <span v-for="(char, charIndex) in splitChars(station.name)" :key="charIndex" class="block">
-                  {{ char }}
-                </span>
-                <span class="block opacity-0 h-0">|</span>
-                <span v-for="(char, charIndex) in splitChars(station.name)" :key="'dup-' + charIndex" class="block">
                   {{ char }}
                 </span>
               </div>
@@ -196,12 +194,21 @@ function getLineStyle(row: Station[], rowIndex: number) {
   0% {
     transform: translateY(0);
   }
+  10% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(calc(-100% + 20vh));
+  }
+  90% {
+    transform: translateY(calc(-100% + 20vh));
+  }
   100% {
-    transform: translateY(-50%);
+    transform: translateY(0);
   }
 }
 
 .animate-scroll-vertical {
-  animation: scroll-vertical linear infinite;
+  animation: scroll-vertical ease-in-out infinite;
 }
 </style>
