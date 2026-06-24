@@ -92,11 +92,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full h-full bg-white flex flex-col overflow-hidden">
-    <div class="flex-1 flex items-center justify-center p-4 overflow-auto">
-      <div class="w-full">
-        <BusRouteDisplay :stations="busData.stations" />
-      </div>
+  <div class="home-page">
+    <div class="main-content">
+      <BusRouteDisplay :stations="busData.stations" />
     </div>
     <BusInfoBar
       :route-name="busData.routeName"
@@ -105,3 +103,28 @@ onMounted(async () => {
     />
   </div>
 </template>
+
+<style scoped>
+.home-page {
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vh 2vw;
+  overflow: hidden;
+}
+
+.main-content > div {
+  width: 100%;
+  height: 100%;
+}
+</style>

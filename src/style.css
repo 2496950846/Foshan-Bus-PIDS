@@ -21,16 +21,13 @@
 }
 
 html, body, #app {
-  width: 30.004cm;
-  height: 12.003cm;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
+  background-color: #fff;
 }

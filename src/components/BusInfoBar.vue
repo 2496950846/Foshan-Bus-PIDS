@@ -7,17 +7,51 @@ defineProps<{
 </script>
 
 <template>
-  <div class="bg-blue-600 py-3 px-6">
-    <div class="flex items-center justify-center gap-6">
-      <span class="text-yellow-400 font-bold text-2xl">{{ routeName }}</span>
+  <div class="info-bar">
+    <div class="info-bar-content">
+      <span class="route-name">{{ routeName }}</span>
       
-      <span class="text-white text-xl">本车从</span>
+      <span class="info-text">本车从</span>
       
-      <span class="text-yellow-400 font-bold text-xl">{{ fromStation }}</span>
+      <span class="station-highlight">{{ fromStation }}</span>
       
-      <span class="text-white text-xl">开往</span>
+      <span class="info-text">开往</span>
       
-      <span class="text-yellow-400 font-bold text-xl">{{ toStation }}</span>
+      <span class="station-highlight">{{ toStation }}</span>
     </div>
   </div>
 </template>
+
+<style scoped>
+.info-bar {
+  background-color: #2563eb;
+  padding: 1.5vh 3vw;
+  flex-shrink: 0;
+}
+
+.info-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.route-name {
+  color: #facc15;
+  font-weight: bold;
+  font-size: 4vh;
+}
+
+.info-text {
+  color: white;
+  font-size: 3.2vh;
+}
+
+.station-highlight {
+  color: #facc15;
+  font-weight: bold;
+  font-size: 3.2vh;
+}
+</style>
