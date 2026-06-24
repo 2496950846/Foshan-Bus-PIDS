@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'Xingkai';
+        src: local('STXingkai'), local('华文行楷'), local('FZXingKai-S04S'), local('FangSong'), local('STFangsong');
+      }
+      .logo-text {
+        font-family: 'Xingkai', 'STXingkai', '华文行楷', 'KaiTi', '楷体', 'SimSun', serif;
+        fill: #E60012;
+        font-weight: bold;
+      }
+    </style>
+  </defs>
+
+  <path
+    d="M 250 70
+       A 180 180 0 0 0 120 380
+       A 180 180 0 0 1 95 370
+       A 210 210 0 0 1 250 40
+       A 210 210 0 0 1 430 160
+       L 400 160
+       A 180 180 0 0 0 250 70 Z"
+    fill="#E60012"
+  />
+
+  <text x="160" y="280" class="logo-text" font-size="180">佛</text>
+  <text x="310" y="280" class="logo-text" font-size="140">山</text>
+  <text x="300" y="400" class="logo-text" font-size="90">公交</text>
+
+  <text x="140" y="420" class="logo-text" font-size="50" font-family="Arial, sans-serif" font-weight="normal">Foshan</text>
+  <text x="140" y="470" class="logo-text" font-size="50" font-family="Arial, sans-serif" font-weight="normal">Bus</text>
+</svg>
