@@ -246,7 +246,7 @@ pm2 startup
 - `api/db.js` - 数据库配置
 
 ## 截图演示
-https://github.com/2496950846/Foshan-Bus-PIDS/tree/main/png/演示.png
+<img width="1366" height="728" alt="演示" src="https://github.com/user-attachments/assets/06e60baf-9590-4be7-9108-f84b3cbc76b7" />
 
 ### 首页（电子站牌显示界面）
 展示公交线路信息和站点列表，采用大字号、高对比度设计，适合户外电子站牌查看。
