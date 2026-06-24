@@ -46,7 +46,7 @@ function initDatabase() {
   `, () => {
     db.get('SELECT * FROM admins WHERE username = ?', ['admin'], (err, row) => {
       if (!row) {
-        db.run('INSERT INTO admins (username, password) VALUES (?, ?)', ['admin', 'admin123'])
+        db.run('INSERT INTO admins (username, password) VALUES (?, ?)', ['admin', '123456'])
       }
     })
   })

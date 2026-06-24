@@ -115,3 +115,146 @@ npx concurrently "npm run dev" "npm run server"
 
 - **首页** (`/`) - 公交电子站牌显示界面，展示线路信息和站点列表
 - **管理页** (`/admin`) - 后台管理界面，用于管理线路和站点
+
+## 功能说明
+
+### 首页（电子站牌显示）
+- 顶部信息栏显示当前线路名称、起止站点和系统时间
+- 主体区域以醒目方式展示线路名称和站点信息
+- 响应式布局适配不同尺寸的显示设备
+- 实时时间显示，自动更新
+
+### 管理后台
+- 线路管理：增删改查公交线路
+- 站点管理：为每条线路添加、编辑、删除站点
+- 当前线路设置：选择当前电子站牌显示的线路
+- 管理员登录验证
+
+### 主题功能
+- 支持浅色/深色主题切换
+- 自动记忆用户主题偏好
+
+## 数据库结构
+
+系统使用 SQLite 数据库，包含以下数据表：
+
+### routes（线路表）
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| id | INTEGER | 主键，自增 |
+| name | TEXT | 线路名称（如 B25） |
+| from_station | TEXT | 起点站 |
+| to_station | TEXT | 终点站 |
+| created_at | TIMESTAMP | 创建时间 |
+
+### stations（站点表）
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| id | INTEGER | 主键，自增 |
+| route_id | INTEGER | 关联线路 ID |
+| name | TEXT | 站点名称 |
+| order_num | INTEGER | 站点顺序 |
+
+### admins（管理员表）
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| id | INTEGER | 主键，自增 |
+| username | TEXT | 用户名（唯一） |
+| password | TEXT | 密码 |
+| created_at | TIMESTAMP | 创建时间 |
+
+### settings（设置表）
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| id | INTEGER | 主键，自增 |
+| key | TEXT | 设置键（唯一） |
+| value | TEXT | 设置值 |
+
+> 默认管理员账号：`admin` / `123456`
+
+## 部署指南
+
+### 开发环境部署
+
+1. 克隆项目后安装依赖：
+```bash
+npm install
+```
+
+2. 启动后端服务：
+```bash
+npm run server
+```
+
+3. 启动前端开发服务器：
+```bash
+npm run dev
+```
+
+### 生产环境部署
+
+#### 前端部署
+
+1. 构建生产版本：
+```bash
+npm run build
+```
+
+2. 将 `dist` 目录下的文件部署到 Web 服务器（如 Nginx、Apache）
+
+3. 配置 Nginx 示例：
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /path/to/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api {
+        proxy_pass http://localhost:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+#### 后端部署
+
+1. 使用 PM2 进程管理器：
+```bash
+npm install -g pm2
+pm2 start api/server.js --name bus-pids-api
+```
+
+2. 设置开机自启：
+```bash
+pm2 save
+pm2 startup
+```
+
+### 环境变量
+
+如需修改默认配置，可编辑以下文件：
+- `api/server.js` - 修改端口号
+- `api/db.js` - 数据库配置
+
+## 截图演示
+
+### 首页（电子站牌显示界面）
+展示公交线路信息和站点列表，采用大字号、高对比度设计，适合户外电子站牌查看。
+
+### 管理后台
+- 线路列表管理
+- 站点编辑功能
+- 当前线路切换
+
+---
+
+**佛山公交 PIDS 系统** - 为市民提供清晰的公交线路信息服务
