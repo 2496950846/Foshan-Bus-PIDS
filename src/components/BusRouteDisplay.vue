@@ -53,10 +53,21 @@ function getLineStyle(row: Station[], rowIndex: number) {
     right -= extendPercent
   }
 
-  return {
-    left: left + '%',
-    right: right + '%'
+  const style: Record<string, string> = {}
+
+  if (isLastRow) {
+    style.left = '-4vw'
+  } else {
+    style.left = left + '%'
   }
+
+  if (isFirstRow) {
+    style.right = '-4vw'
+  } else {
+    style.right = right + '%'
+  }
+
+  return style
 }
 </script>
 
